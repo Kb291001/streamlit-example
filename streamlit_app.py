@@ -1,40 +1,20 @@
-import altair as alt
-import numpy as np
-import pandas as pd
 import streamlit as st
 
-"""
-# Welcome to Streamlit!
+# Title of the app
+st.title('Media Planning Tool')
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:.
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
+# User inputs
+st.header('Campaign Objectives and Details')
+objective = st.selectbox('Select the Primary Objective', ['Maximizing Attention', 'Reach', 'Cost Efficiency'])
+budget = st.number_input('Total Campaign Budget', min_value=0.0, value=10000.0)
+# Add more inputs as needed
 
-In the meantime, below is an example of what you can do with just a few lines of code:
-"""
+# Display historical data (Placeholder)
+st.header('Historical Data and Benchmarks')
+st.write('Historical benchmarks would be displayed here.')
 
-num_points = st.slider("Number of points in spiral", 1, 10000, 1100)
-num_turns = st.slider("Number of turns in spiral", 1, 300, 31)
+# Recommendations (Placeholder)
+st.header('Recommendations')
+st.write('Based on your inputs, recommendations will be displayed here.')
 
-indices = np.linspace(0, 1, num_points)
-theta = 2 * np.pi * num_turns * indices
-radius = indices
-
-x = radius * np.cos(theta)
-y = radius * np.sin(theta)
-
-df = pd.DataFrame({
-    "x": x,
-    "y": y,
-    "idx": indices,
-    "rand": np.random.randn(num_points),
-})
-
-st.altair_chart(alt.Chart(df, height=700, width=700)
-    .mark_point(filled=True)
-    .encode(
-        x=alt.X("x", axis=None),
-        y=alt.Y("y", axis=None),
-        color=alt.Color("idx", legend=None, scale=alt.Scale()),
-        size=alt.Size("rand", legend=None, scale=alt.Scale(range=[1, 150])),
-    ))
+# Add more interactive elements as needed
